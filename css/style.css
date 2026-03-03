@@ -424,8 +424,35 @@ img {
 }
 
 .testimonial-slider {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-track {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 30px;
+    /* Espaço para scrollbar mobile */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary) rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.testimonial-track::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.testimonial-track::-webkit-scrollbar-thumb {
+    background: var(--color-secondary);
+    border-radius: 10px;
 }
 
 .testimonial-card {
@@ -433,6 +460,10 @@ img {
     padding: 40px;
     border-radius: 20px;
     backdrop-filter: blur(10px);
+    flex: 0 0 calc(50% - 15px);
+    /* 2 cards por tela no desktop */
+    scroll-snap-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stars {
@@ -454,6 +485,14 @@ img {
 .testimonial-card span {
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+.swipe-hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-top: 15px;
+    display: none;
+    /* Só exibiremos em telas menores */
 }
 
 /* ==========================================================================
@@ -558,6 +597,15 @@ img {
 
     .courses-grid {
         grid-template-columns: 1fr;
+    }
+
+    .testimonial-card {
+        flex: 0 0 85%;
+        /* Cards maiores mas com vizinho vazando */
+    }
+
+    .swipe-hint {
+        display: block;
     }
 
     .footer-grid {
